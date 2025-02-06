@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Analytics Dashboard</h1>
+        <input type="date" id="startDate">
+        <input type="date" id="endDate">
+        <button id="loadBtn">Load Data</button>
+        <canvas id="chart"></canvas>
+
+        <h2>Metrics</h2>
+        <div class="metrics">
+            <p>Average: <span id="avg">N/A</span></p>
+            <p>Min: <span id="min">N/A</span></p>
+            <p>Max: <span id="max">N/A</span></p>
+            <p>Std Dev: <span id="stdDev">N/A</span></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
