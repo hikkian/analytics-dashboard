@@ -63,8 +63,9 @@ Click Load Data to fetch data and display it on the chart.
 
 Metrics will automatically update below the chart.
 
-Project Structure
+## Project Structure
 
+```bash
 analytics-dashboard/
 ├── backend/
 │   ├── database/
@@ -81,12 +82,42 @@ analytics-dashboard/
 │   └── script.js            # Chart logic & API calls
 ├── .gitignore
 └── README.md
-API Endpoints
-GET /api/measurements?field=<field>&start_date=<date>&end_date=<date>
-Returns data for a specific field within a date range.
+```
 
-GET /api/measurements/metrics?field=<field>&start_date=<date>&end_date=<date>
-Returns calculated metrics for a specific field.
+## API Endpoints
+
+### GET `/api/measurements`
+**Parameters**:
+- `field` - Sensor field name (e.g., field1, field2)
+- `start_date` - Start date (YYYY-MM-DD)
+- `end_date` - End date (YYYY-MM-DD)
+
+**Response**:
+```json
+[
+  {
+    "timestamp": "2025-01-01T00:00:00.000Z",
+    "field1": 22.34
+  },
+  ...
+]
+```
+
+### GET `/api/measurements/metrics`
+**Parameters**:
+- `field` - Sensor field name
+- `start_date` - Start date (YYYY-MM-DD)
+- `end_date` - End date (YYYY-MM-DD)
+
+**Response**:
+```json
+{
+  "avg": 23.45,
+  "min": 20.12,
+  "max": 25.78,
+  "stdDev": 1.23
+}
+```
 
 Author
 Hikkian
