@@ -1,13 +1,13 @@
 # Analytics Dashboard
 
-**Analytics Dashboard** is a web application for visualizing and analyzing sensor data stored in MongoDB. It allows users to select date ranges, display data on an interactive chart, and calculate key metrics (average, min, max, standard deviation).
+**Analytics Dashboard** is a web application for visualizing and analyzing sensor data stored in MongoDB. It allows users to select date ranges, display data on an interactive chart, and calculate key metrics such as average, minimum, maximum, and standard deviation.
 
 ---
 
 ## Features
 
 - **Data Loading**: Select start and end dates to fetch data from MongoDB.
-- **Interactive Chart**: Visualize data using Chart.js with time-based axis.
+- **Interactive Chart**: Visualize data using Chart.js with a time-based axis.
 - **Metrics Calculation**: Display average, minimum, maximum, and standard deviation for the selected time range.
 - **Responsive Design**: Works on both desktop and mobile devices.
 
@@ -15,57 +15,64 @@
 
 ## Technologies
 
-- **Frontend**:
-  - HTML, CSS, JavaScript
-  - [Chart.js](https://www.chartjs.org/) for data visualization
-  - [chartjs-adapter-date-fns](https://github.com/chartjs/chartjs-adapter-date-fns) for time axis support
-- **Backend**:
-  - Node.js, Express.js
-  - MongoDB (with Mongoose ODM)
-- **Tools**:
-  - Git for version control
-  - Postman (optional) for API testing
+### **Frontend**
+- HTML, CSS, JavaScript
+- [Chart.js](https://www.chartjs.org/) for data visualization
+- [chartjs-adapter-date-fns](https://github.com/chartjs/chartjs-adapter-date-fns) for time axis support
+
+### **Backend**
+- Node.js, Express.js
+- MongoDB (with Mongoose ODM)
+
+### **Tools**
+- Git for version control
+- Postman (optional) for API testing
 
 ---
 
 ## Installation
 
 ### 1. Clone the Repository
-
+```bash
 git clone https://github.com/your-username/analytics-dashboard.git
 cd analytics-dashboard
-2. Install Dependencies
-Install backend dependencies:
+```
 
+### 2. Install Dependencies
+Navigate to the backend folder and install dependencies:
+```bash
 cd backend
 npm install
-3. Set Up MongoDB
+```
 
-Install MongoDB locally or use a cloud service like MongoDB Atlas.
-
-Update the MongoDB connection URI in backend/database/connection.js if needed.
-
-Seed the database with sample data:
-
+### 3. Set Up MongoDB
+- Install MongoDB locally or use a cloud service like MongoDB Atlas.
+- Update the MongoDB connection URI in `backend/database/connection.js` if needed.
+- Seed the database with sample data:
+```bash
 node backend/database/seed.js
-4. Start the Backend Server
+```
 
+### 4. Start the Backend Server
+```bash
 node backend/index.js
-The server will run at http://localhost:5000.
+```
+The server will run at `http://localhost:5000`.
 
-5. Open the Frontend
-Open frontend/index.html in a web browser (e.g., using Live Server in VS Code).
+### 5. Open the Frontend
+Open `frontend/index.html` in a web browser (e.g., using Live Server in VS Code).
 
-Usage
-Select a Start Date and End Date.
+---
 
-Click Load Data to fetch data and display it on the chart.
+## Usage
+1. Select a **Start Date** and **End Date**.
+2. Click **Load Data** to fetch data and display it on the chart.
+3. Metrics will automatically update below the chart.
 
-Metrics will automatically update below the chart.
+---
 
 ## Project Structure
-
-```bash
+```
 analytics-dashboard/
 ├── backend/
 │   ├── database/
@@ -84,48 +91,31 @@ analytics-dashboard/
 └── README.md
 ```
 
+---
+
 ## API Endpoints
 
-### GET `/api/measurements`
-**Parameters**:
-- `field` - Sensor field name (e.g., field1, field2)
-- `start_date` - Start date (YYYY-MM-DD)
-- `end_date` - End date (YYYY-MM-DD)
-
-**Response**:
-```json
-[
-  {
-    "timestamp": "2025-01-01T00:00:00.000Z",
-    "field1": 22.34
-  },
-  ...
-]
+### **Retrieve Measurements**
+```http
+GET /api/measurements?field=<field>&start_date=<date>&end_date=<date>
 ```
+Returns data for a specific field within a date range.
 
-### GET `/api/measurements/metrics`
-**Parameters**:
-- `field` - Sensor field name
-- `start_date` - Start date (YYYY-MM-DD)
-- `end_date` - End date (YYYY-MM-DD)
-
-**Response**:
-```json
-{
-  "avg": 23.45,
-  "min": 20.12,
-  "max": 25.78,
-  "stdDev": 1.23
-}
+### **Retrieve Metrics**
+```http
+GET /api/measurements/metrics?field=<field>&start_date=<date>&end_date=<date>
 ```
+Returns calculated metrics for a specific field.
 
-Author
-Hikkian
+---
+
+## Author
+**Hikkian**  
 Visit my [GitHub profile](https://github.com/hikkian).
 
-Acknowledgments
-Chart.js for the powerful charting library.
+---
 
-MongoDB for the flexible NoSQL database.
-
-Express.js for the minimalist web framework.
+## Acknowledgments
+- [Chart.js](https://www.chartjs.org/) for the powerful charting library.
+- [MongoDB](https://www.mongodb.com/) for the flexible NoSQL database.
+- [Express.js](https://expressjs.com/) for the minimalist web framework.
