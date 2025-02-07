@@ -34,7 +34,7 @@
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/analytics-dashboard.git
+git clone https://github.com/hikkian/analytics-dashboard.git
 cd analytics-dashboard
 ```
 
